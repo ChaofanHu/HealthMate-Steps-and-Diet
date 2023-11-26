@@ -73,34 +73,43 @@ public class HomeFragment extends Fragment {
 
         StepAppOpenHelper databaseOpenHelper = new StepAppOpenHelper(this.getContext());
         SQLiteDatabase database = databaseOpenHelper.getWritableDatabase();
+        if (accSensor != null)
+        {
+            sensorListener = new StepCounterListener(stepCountsView, progressBar, database);
+            sensorManager.registerListener(sensorListener, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            Toast.makeText(getContext(), R.string.start_text, Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
+        }
 
 
-
-        toggleButtonGroup = (MaterialButtonToggleGroup) root.findViewById(R.id.toggleButtonGroup);
-        toggleButtonGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-            @Override
-            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                if (group.getCheckedButtonId() ==R.id.start_button)
-                {
-                    if (accSensor != null)
-                    {
-                        sensorListener = new StepCounterListener(stepCountsView, progressBar, database);
-                        sensorManager.registerListener(sensorListener, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
-                        Toast.makeText(getContext(), R.string.start_text, Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-                        Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
-                    }
-
-                }
-                else
-                {
-                    sensorManager.unregisterListener(sensorListener);
-                    Toast.makeText(getContext(), R.string.stop_text, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        toggleButtonGroup = (MaterialButtonToggleGroup) root.findViewById(R.id.toggleButtonGroup);
+//        toggleButtonGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+//            @Override
+//            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
+//                if (group.getCheckedButtonId() ==R.id.start_button)
+//                {
+//                    if (accSensor != null)
+//                    {
+//                        sensorListener = new StepCounterListener(stepCountsView, progressBar, database);
+//                        sensorManager.registerListener(sensorListener, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
+//                        Toast.makeText(getContext(), R.string.start_text, Toast.LENGTH_LONG).show();
+//                    }
+//                    else
+//                    {
+//                        Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
+//                    }
+//
+//                }
+//                else
+//                {
+//                    sensorManager.unregisterListener(sensorListener);
+//                    Toast.makeText(getContext(), R.string.stop_text, Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
         return root;
     }
