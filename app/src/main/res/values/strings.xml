@@ -34,4 +34,8 @@
     <string name="hourly_report">Daily report</string>
     <string name="daily_report">Daily report</string>
     <string name="calory_report">Calory report</string>
+
+    <string name="tree_collected"> Tree Collection</string>
+    <string name="daily_goal_reached">Daily Goal</string>
+    <string name="step_count">Step Count</string>
 </resources>
