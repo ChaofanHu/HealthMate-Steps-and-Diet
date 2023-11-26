@@ -40,10 +40,9 @@
             android:textSize="88sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.465"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.211" />
+            app:layout_constraintVertical_bias="0.242" />
 
         <TextView
             android:id="@+id/goal"
@@ -53,7 +52,7 @@
             android:text="@string/goal"
             app:layout_constraintBottom_toTopOf="@+id/counter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.469"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/progressBar"
             app:layout_constraintVertical_bias="1.0" />
@@ -66,10 +65,10 @@
             android:text="@string/steps"
             app:layout_constraintBottom_toBottomOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/counter"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progressBar"
@@ -84,10 +83,10 @@
             app:indicatorSize="304dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.323"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.043"
+            app:layout_constraintVertical_bias="0.082"
             app:trackColor="?attr/colorTertiaryContainer"
             app:trackThickness="42dp" />
 
@@ -138,13 +137,14 @@
                         android:id="@+id/text_calorie_burned"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:layout_marginBottom="2dp"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/view_calorie_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.257"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.266"
+                        app:layout_constraintVertical_bias="0.344"
                         app:layout_constraintVertical_chainStyle="packed"
                         tools:text="210 kcal" />
 

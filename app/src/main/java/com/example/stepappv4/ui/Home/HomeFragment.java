@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private TextView stepCountsView;
+    private TextView caloryBurned;
     private CircularProgressIndicator progressBar;
 
     private MaterialButtonToggleGroup toggleButtonGroup;
@@ -62,6 +63,9 @@ public class HomeFragment extends Fragment {
         stepCountsView = (TextView) root.findViewById(R.id.counter);
         stepCountsView.setText("0");
 
+        caloryBurned = (TextView) root.findViewById(R.id.text_calorie_burned);
+        caloryBurned.setText("100");
+
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
         progressBar.setMax(50);
         progressBar.setProgress(0);
@@ -83,33 +87,6 @@ public class HomeFragment extends Fragment {
         {
             Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
         }
-
-
-//        toggleButtonGroup = (MaterialButtonToggleGroup) root.findViewById(R.id.toggleButtonGroup);
-//        toggleButtonGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-//            @Override
-//            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-//                if (group.getCheckedButtonId() ==R.id.start_button)
-//                {
-//                    if (accSensor != null)
-//                    {
-//                        sensorListener = new StepCounterListener(stepCountsView, progressBar, database);
-//                        sensorManager.registerListener(sensorListener, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
-//                        Toast.makeText(getContext(), R.string.start_text, Toast.LENGTH_LONG).show();
-//                    }
-//                    else
-//                    {
-//                        Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
-//                    }
-//
-//                }
-//                else
-//                {
-//                    sensorManager.unregisterListener(sensorListener);
-//                    Toast.makeText(getContext(), R.string.stop_text, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
 
         return root;
     }
@@ -167,8 +144,6 @@ class  StepCounterListener implements SensorEventListener{
                 SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
                 jdf.setTimeZone(TimeZone.getTimeZone("GMT+2"));
                 String sensorEventDate = jdf.format(timeInMillis);
-
-
 
 
                 if ((currentTimeInMilliSecond - lastSensorUpdate) > 1000)
