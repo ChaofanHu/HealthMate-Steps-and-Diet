@@ -28,9 +28,9 @@
         android:label="@string/menu_day"
         tools:layout="@layout/fragment_day" />
     <fragment
-        android:id="@+id/nav_calory"
-        android:name="com.example.stepappv4.ui.CaloryCalculator.CaloryCalculatorFragment"
-        android:label="Calory Calculator"
-        tools:layout="@layout/fragment_calorycalculator" />
+        android:id="@+id/nav_calorie"
+        android:name="com.example.stepappv4.ui.CalorieCalculator.CalorieCalculatorFragment"
+        android:label="Calorie Calculator"
+        tools:layout="@layout/fragment_caloriecalculator" />
 
 </navigation>

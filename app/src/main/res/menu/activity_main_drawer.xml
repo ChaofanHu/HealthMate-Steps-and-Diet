@@ -9,9 +9,9 @@
             android:title="@string/menu_steps" />
 
         <item
-            android:id="@+id/nav_calory"
+            android:id="@+id/nav_calorie"
             android:icon="@drawable/bangkok_street_food_svgrepo_com"
-            android:title="@string/calory_report" />
+            android:title="@string/calorie_report" />
 
         <item
             android:id="@+id/nav_day"

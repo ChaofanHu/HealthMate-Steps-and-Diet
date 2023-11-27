@@ -33,7 +33,7 @@
 
     <string name="hourly_report">Daily report</string>
     <string name="daily_report">Daily report</string>
-    <string name="calory_report">Calory report</string>
+    <string name="calorie_report">calorie report</string>
 
     <string name="tree_collected"> Tree Collection</string>
     <string name="daily_goal_reached">Daily Goal</string>

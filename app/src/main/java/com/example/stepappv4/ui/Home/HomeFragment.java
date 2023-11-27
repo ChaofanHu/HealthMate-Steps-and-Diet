@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private TextView stepCountsView;
-    private TextView caloryBurned;
+    private TextView calorieBurned;
     private CircularProgressIndicator progressBar;
 
     private MaterialButtonToggleGroup toggleButtonGroup;
@@ -63,8 +63,8 @@ public class HomeFragment extends Fragment {
         stepCountsView = (TextView) root.findViewById(R.id.counter);
         stepCountsView.setText("0");
 
-        caloryBurned = (TextView) root.findViewById(R.id.text_calorie_burned);
-        caloryBurned.setText("100");
+        calorieBurned = (TextView) root.findViewById(R.id.text_calorie_burned);
+        calorieBurned.setText("100");
 
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
         progressBar.setMax(50);

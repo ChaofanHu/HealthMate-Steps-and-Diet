@@ -1,4 +1,4 @@
-package com.example.stepappv4.ui.CaloryCalculator;
+package com.example.stepappv4.ui.CalorieCalculator;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class CaloryCalculatorFragment extends Fragment {
+public class CalorieCalculatorFragment extends Fragment {
     public int todaySteps = 0;
     TextView numStepsTextView;
     AnyChartView anyChartView;
