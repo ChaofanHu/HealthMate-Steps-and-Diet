@@ -142,14 +142,14 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="401dp"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:background="@drawable/bottom_sheet_bg">
+            android:background="@drawable/bottom_sheet_bg"
+            android:padding="8dp">
 
 
             <RelativeLayout
-                android:id="@+id/relativeLayout"
+                android:id="@+id/breakfast"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:background="@drawable/icon_bg"
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:loadImage="@{water.quantity.image}"
+
                     android:scaleType="centerCrop"
                     tools:src="@drawable/hot_cup" />
 
@@ -174,11 +174,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:setWaterQuantity="@{water.quantity.quantity}"
+
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
-                app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-                app:layout_constraintStart_toEndOf="@+id/relativeLayout"
-                app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfast"
+                app:layout_constraintStart_toEndOf="@+id/breakfast"
+                app:layout_constraintTop_toTopOf="@+id/breakfast"
                 tools:text="200 mL" />
 
 
@@ -189,7 +189,133 @@
                 android:layout_marginEnd="8dp"
                 android:alpha="0.8"
                 android:includeFontPadding="false"
-                android:setTime="@{water.timeStamp}"
+
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7:30 am" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="402dp"
+        android:layout_height="100dp" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:background="@drawable/bottom_sheet_bg">
+
+
+            <RelativeLayout
+                android:id="@+id/lunch"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/icon_bg"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/water_icon2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/hot_cup" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/lunch"
+                app:layout_constraintStart_toEndOf="@+id/lunch"
+                app:layout_constraintTop_toTopOf="@+id/lunch"
+                tools:text="200 mL" />
+
+
+            <TextView
+                style="@style/grayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:alpha="0.8"
+                android:includeFontPadding="false"
+
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7:30 am" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="402dp"
+        android:layout_height="100dp" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_sheet_bg"
+            android:padding="8dp">
+
+
+            <RelativeLayout
+                android:id="@+id/dinner"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/icon_bg"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/water_icon3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/hot_cup" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/dinner"
+                app:layout_constraintStart_toEndOf="@+id/dinner"
+                app:layout_constraintTop_toTopOf="@+id/dinner"
+                tools:text="200 mL" />
+
+
+            <TextView
+                style="@style/grayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:alpha="0.8"
+                android:includeFontPadding="false"
+
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
