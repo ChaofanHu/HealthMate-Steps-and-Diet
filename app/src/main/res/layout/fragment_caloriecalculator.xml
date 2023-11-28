@@ -151,7 +151,8 @@
             android:id="@+id/breakfast"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            tools:background="@drawable/shape_circle"
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/bottom_nav_bg"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,13 +160,13 @@
 
 
             <ImageView
-                android:id="@+id/water_icon"
+                android:id="@+id/breakfast_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/hot_cup" />
+                android:src="@drawable/breakfast" />
 
         </RelativeLayout>
 
@@ -180,20 +181,6 @@
             app:layout_constraintStart_toEndOf="@+id/breakfast"
             app:layout_constraintTop_toTopOf="@+id/breakfast" />
 
-
-        <TextView
-            style="@style/grayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:alpha="0.8"
-            android:includeFontPadding="false"
-
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="7:30 am" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,7 +199,8 @@
             android:id="@+id/lunch"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@drawable/hot_cup"
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/bottom_nav_bg"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -220,13 +208,13 @@
 
 
             <ImageView
-                android:id="@+id/water_icon2"
+                android:id="@+id/lunch_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
 
+                android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/hot_cup" />
+                android:src="@drawable/lunch" />
 
         </RelativeLayout>
 
@@ -241,20 +229,6 @@
             app:layout_constraintTop_toTopOf="@+id/lunch"
             android:text="Lunch" />
 
-
-        <TextView
-            style="@style/grayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:alpha="0.8"
-            android:includeFontPadding="false"
-
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="7:30 am" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -273,7 +247,8 @@
             android:id="@+id/dinner"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@drawable/hot_cup"
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/bottom_nav_bg"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -281,13 +256,13 @@
 
 
             <ImageView
-                android:id="@+id/water_icon3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/dinner_icon"
+                android:layout_width="44dp"
+                android:layout_height="40dp"
 
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/hot_cup" />
+                android:src="@drawable/dinner" />
 
         </RelativeLayout>
 
@@ -302,20 +277,6 @@
             app:layout_constraintTop_toTopOf="@+id/dinner"
             android:text="Dinner" />
 
-
-        <TextView
-            style="@style/grayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:alpha="0.8"
-            android:includeFontPadding="false"
-
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="7:30 am" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
