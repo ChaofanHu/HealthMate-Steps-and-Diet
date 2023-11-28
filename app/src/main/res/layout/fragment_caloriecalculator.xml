@@ -21,13 +21,12 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
-        app:cardBackgroundColor="@color/dashboard_card_color"
+        app:cardBackgroundColor="@color/md_theme_light_secondary"
         app:cardCornerRadius="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <TextView
                 android:id="@+id/yayText"
@@ -70,13 +69,14 @@
                 android:id="@+id/totalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="8dp"
                 android:alpha="0.7"
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
                 android:textColor="?attr/colorOnSecondary"
                 app:layout_constraintBottom_toBottomOf="@+id/completedText"
-                app:layout_constraintStart_toEndOf="@id/completedText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.455"
+                app:layout_constraintStart_toStartOf="parent"
                 tools:text="/ 3500 mL" />
 
             <com.skydoves.progressview.ProgressView
@@ -135,6 +135,70 @@
         app:cardBackgroundColor="@color/fotd_bg_color"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp"/>
+
+    <FrameLayout
+        android:layout_width="402dp"
+        android:layout_height="100dp" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:background="@drawable/bottom_sheet_bg">
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/icon_bg"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/water_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:loadImage="@{water.quantity.image}"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/hot_cup" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:setWaterQuantity="@{water.quantity.quantity}"
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+                app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+                app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+                tools:text="200 mL" />
+
+
+            <TextView
+                style="@style/grayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:alpha="0.8"
+                android:includeFontPadding="false"
+                android:setTime="@{water.timeStamp}"
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7:30 am" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 
 </LinearLayout>
 

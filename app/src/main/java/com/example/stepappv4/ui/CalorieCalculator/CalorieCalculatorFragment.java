@@ -15,6 +15,7 @@ public class CalorieCalculatorFragment extends Fragment {
     private ProgressBar progressBarRemaining;
     private ListView listViewMeals;
     private TextView textViewToday;
+    
 
     public CalorieCalculatorFragment() {
         // Required empty public constructor
