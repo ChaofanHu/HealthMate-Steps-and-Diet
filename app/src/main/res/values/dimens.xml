@@ -5,4 +5,14 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="username_illustration_size">300dp</dimen>
+    <dimen name="gettingStarted_illustration_size">300dp</dimen>
+    <dimen name="onBoarding_illustration_size">240dp</dimen>
+    <dimen name="no_internet_anim_size">200dp</dimen>
+    <dimen name="loadingAnimSize">80dp</dimen>
+    <dimen name="loadingAnimPadding">8dp</dimen>
+    <dimen name="loadingAnimCornerRadius">44dp</dimen>
+    <dimen name="boundary">16dp</dimen>
+    <dimen name="waterQuantityImageSize">48dp</dimen>
 </resources>

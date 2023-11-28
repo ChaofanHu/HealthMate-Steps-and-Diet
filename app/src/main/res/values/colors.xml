@@ -61,4 +61,98 @@
     <color name="md_theme_dark_surfaceTint">#53DEA2</color>
     <color name="md_theme_dark_outlineVariant">#404943</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="gray2">#f1f1f1</color>
+    <color name="gray3">#AAAAAA</color>
+    <color name="gray4">#9a9a9a</color>
+    <color name="gray5">#6A6A6A</color>
+    <color name="gray6">#535353</color>
+    <color name="black">#000000</color>
+
+
+    <!--    lightTheme-->
+
+    <color name="lt_deepblue">#00133d</color>
+    <color name="lt_darkpblue">#003cbf</color>
+    <color name="lt_blue">#008cef</color>
+    <color name="lt_yellow">#ffe0b7</color>
+    <color name="surface">#f8f8fa</color>
+
+
+    <!--    darkTheme-->
+    <color name="dt_deepblue">#292546</color>
+    <color name="dt_darkpblue">#312c51</color>
+    <color name="dt_blue">#48426d</color>
+    <color name="dt_pink">#f1aa9b</color>
+    <color name="dt_yellow">#f0c38e</color>
+    <color name="dt_gray">#ececed</color>
+
+    <color name="username_textBox_color">@color/white</color>
+    <color name="spokeColor">@color/lt_darkpblue</color>
+
+    <color name="secondary_button_color">@color/lt_blue</color>
+    <color name="secondary_button_color_disabled">#50008cef</color>
+
+
+    <color name="nextIconTint">@color/surface</color>
+    <color name="primary_button_color">@color/lt_darkpblue</color>
+    <color name="primary_button_color_disabled">#50003cbf</color>
+
+    <color name="indicatorColor">@color/lt_darkpblue</color>
+    <color name="indicatorTrackColor">#90003cbf</color>
+    <color name="indicatorTextColor">@color/surface</color>
+
+
+    <color name="bottom_nav_icon_tint">@color/lt_blue</color>
+    <color name="bottom_nav_icon_tint_disabled">@color/gray6</color>
+    <color name="bottom_nav_bg">@color/white</color>
+
+
+    <color name="dashboard_title_color">@color/lt_deepblue</color>
+
+    <color name="tabLayoutIndicatorColor">@color/dt_deepblue</color>
+    <color name="tabLayoutTextColor">@color/dt_deepblue</color>
+
+    <color name="icon_bg_color">@color/lt_blue</color>
+
+    <color name="dashboard_card_color">@color/lt_blue</color>
+    <color name="dashboard_card_add_color">@color/lt_darkpblue</color>
+
+    <color name="fotd_bg_color">@color/lt_yellow</color>
+    <color name="color_on_fotd">@color/lt_deepblue</color>
+
+    <color name="progress_color">@color/lt_darkpblue</color>
+    <color name="progress_bg_color">@color/surface</color>
+
+    <color name="dividerColor">@color/lt_deepblue</color>
+    <color name="numberPickerColor">@color/lt_deepblue</color>
+
+    <color name="percentageCardBgColor">@color/lt_blue</color>
+    <color name="expCardBgColor">@color/lt_deepblue</color>
+    <color name="colorOnCard">@color/white</color>
+
+    <color name="graphColor">@color/lt_blue</color>
+    <color name="graphGradientColor">@color/white</color>
+    <color name="graphLabelColor">@color/gray5</color>
+    <color name="graphBgColor">@color/gray2</color>
+
+    <color name="onBoardingCard">@color/surface</color>
+    <color name="onBoardingBg">@color/white</color>
+    <color name="selectedDot">@color/onBoardingPrimary</color>
+    <color name="unselectedDot">#5000133d</color>
+    <color name="onBoardingPrimary">@color/lt_deepblue</color>
+
+    <!--    profile-->
+    <color name="card1BgColor">@color/lt_yellow</color>
+    <color name="card1TextColor">@color/lt_deepblue</color>
+
+    <color name="card2BgColor">@color/lt_blue</color>
+    <color name="card2TextColor">@color/surface</color>
+
+
+    <color name="divider">#EEEDF0</color>
+
+    <color name="versionColor">@color/lt_blue</color>
+    <color name="nameColor">@color/lt_blue</color>
 </resources>

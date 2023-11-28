@@ -26,8 +26,6 @@ public class CalorieCalculatorFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_caloriecalculator, container, false);
 
-        progressBarRemaining = rootView.findViewById(R.id.progressBarRemaining);
-        listViewMeals = rootView.findViewById(R.id.listViewMeals);
         textViewToday = rootView.findViewById(R.id.textViewToday);
 
         // Set up your ListView adapter here
