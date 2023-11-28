@@ -21,7 +21,7 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
-        app:cardBackgroundColor="@color/md_theme_light_secondary"
+        app:cardBackgroundColor="#8796EC"
         app:cardCornerRadius="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                tools:text="Yay !"
+                android:text="HELLO!"
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
                 android:textColor="?attr/colorOnSecondary"
                 app:layout_constraintEnd_toStartOf="@+id/addSleep"
@@ -45,13 +45,14 @@
                 android:id="@+id/greetingText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="8dp"
+                android:text="EATEN / GOAL"
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
                 android:textColor="?attr/colorOnSecondary"
                 app:layout_constraintEnd_toEndOf="@+id/yayText"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/yayText"
-                app:layout_constraintTop_toBottomOf="@id/yayText"
-                tools:text="You're almost done !" />
+                app:layout_constraintTop_toBottomOf="@id/yayText" />
 
             <TextView
                 android:id="@+id/completedText"
@@ -63,7 +64,7 @@
                 android:textColor="?attr/colorOnSecondary"
                 app:layout_constraintStart_toStartOf="@id/greetingText"
                 app:layout_constraintTop_toBottomOf="@id/greetingText"
-                tools:text="2300" />
+                android:text="2300" />
 
             <TextView
                 android:id="@+id/totalText"
@@ -77,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.455"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="/ 3500 mL" />
+                android:text="/ 3500 Cal" />
 
             <com.skydoves.progressview.ProgressView
                 android:id="@+id/progress"
@@ -134,8 +135,7 @@
         android:layout_marginBottom="24dp"
         app:cardBackgroundColor="@color/fotd_bg_color"
         app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"/>
-
+        app:cardElevation="0dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="334dp"
@@ -143,7 +143,7 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/bottom_sheet_bg"
+        android:background="@drawable/bottom_sheet_bg2"
         android:padding="8dp">
 
 
@@ -151,7 +151,7 @@
             android:id="@+id/breakfast"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@drawable/icon_bg"
+            tools:background="@drawable/shape_circle"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -162,8 +162,8 @@
                 android:id="@+id/water_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
 
+                android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/hot_cup" />
 
@@ -174,11 +174,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
 
+            android:text="Breakfast"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
             app:layout_constraintBottom_toBottomOf="@+id/breakfast"
             app:layout_constraintStart_toEndOf="@+id/breakfast"
-            app:layout_constraintTop_toTopOf="@+id/breakfast"
-            tools:text="200 mL" />
+            app:layout_constraintTop_toTopOf="@+id/breakfast" />
 
 
         <TextView
@@ -212,7 +212,7 @@
             android:id="@+id/lunch"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@drawable/icon_bg"
+            android:background="@drawable/hot_cup"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +239,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/lunch"
             app:layout_constraintStart_toEndOf="@+id/lunch"
             app:layout_constraintTop_toTopOf="@+id/lunch"
-            tools:text="200 mL" />
+            android:text="Lunch" />
 
 
         <TextView
@@ -265,7 +265,7 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/bottom_sheet_bg"
+        android:background="@drawable/bottom_sheet_bg3"
         android:padding="8dp">
 
 
@@ -273,7 +273,7 @@
             android:id="@+id/dinner"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@drawable/icon_bg"
+            android:background="@drawable/hot_cup"
             android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -284,8 +284,8 @@
                 android:id="@+id/water_icon3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
 
+                android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/hot_cup" />
 
@@ -300,7 +300,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/dinner"
             app:layout_constraintStart_toEndOf="@+id/dinner"
             app:layout_constraintTop_toTopOf="@+id/dinner"
-            tools:text="200 mL" />
+            android:text="Dinner" />
 
 
         <TextView
