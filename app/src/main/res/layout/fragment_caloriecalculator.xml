@@ -21,7 +21,7 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
-        app:cardBackgroundColor="#8796EC"
+        app:cardBackgroundColor="#87C4EC"
         app:cardCornerRadius="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,7 +106,7 @@
                 android:id="@+id/addSleep"
                 android:layout_width="66dp"
                 android:layout_height="66dp"
-                android:background="@drawable/mini_card_bg"
+                android:background="@drawable/side_nav_bar"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -116,7 +116,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:elevation="8dp"
-                    android:src="@drawable/ic_add_sleep" />
+                    android:src="@drawable/stage_6" />
 
 
             </RelativeLayout>
@@ -182,6 +182,18 @@
             app:layout_constraintTop_toTopOf="@+id/breakfast" />
 
 
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/plus_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -228,6 +240,17 @@
             app:layout_constraintStart_toEndOf="@+id/lunch"
             app:layout_constraintTop_toTopOf="@+id/lunch"
             android:text="Lunch" />
+
+        <ImageButton
+            android:id="@+id/addButton2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/plus_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -276,6 +299,17 @@
             app:layout_constraintStart_toEndOf="@+id/dinner"
             app:layout_constraintTop_toTopOf="@+id/dinner"
             android:text="Dinner" />
+
+        <ImageButton
+            android:id="@+id/addButton3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/plus_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
