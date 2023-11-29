@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
         {
             sensorListener = new StepCounterListener(stepCountsView, progressBar, database);
             sensorManager.registerListener(sensorListener, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
-            Toast.makeText(getContext(), R.string.start_text, Toast.LENGTH_LONG).show();
+
         }
         else
         {
