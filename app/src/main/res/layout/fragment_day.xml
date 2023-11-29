@@ -7,12 +7,6 @@
     tools:context=".ui.Day.DayFragment">
 
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="73dp">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -117,7 +111,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card1TextColor"
-                                tools:text="19" />
+                                android:text="19" />
 
 
                         </LinearLayout>
@@ -150,7 +144,7 @@
                                 android:layout_height="wrap_content"
                                 android:alpha="0.8"
                                 android:includeFontPadding="false"
-                                android:text="Weight"
+                                android:text="Average Step"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -160,7 +154,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card2TextColor"
-                                tools:text="56 kgs" />
+                                android:text="4310 steps" />
 
 
                         </LinearLayout>
@@ -192,7 +186,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:alpha="0.8"
-                                android:text="XP"
+                                android:text="Cal"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -202,9 +196,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="32dp"
                                 android:includeFontPadding="false"
+                                android:text="2000 cals"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
-                                android:textColor="@color/card2TextColor"
-                                tools:text="200" />
+                                android:textColor="@color/card2TextColor" />
 
 
                         </LinearLayout>
@@ -224,8 +218,8 @@
                         app:layout_constraintTop_toTopOf="@+id/materialCardView5">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
                             android:gravity="start"
                             android:orientation="vertical"
                             android:paddingHorizontal="16dp"
@@ -237,7 +231,7 @@
                                 android:layout_height="wrap_content"
                                 android:alpha="0.8"
                                 android:includeFontPadding="false"
-                                android:text="Ranking"
+                                android:text="Weight"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card1TextColor" />
 
@@ -246,19 +240,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rankingTextView"
+                                android:text="200 kgs"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card1TextColor"
-                                tools:text="269" />
-
-                            <ImageView
-                                android:id="@+id/nextArrowBtn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentEnd="true"
-                                android:background="@android:color/transparent"
-                                android:src="@drawable/ic_arrow_next_2"
-                                app:tint="@color/card1TextColor" />
+                                android:textSize="24sp" />
 
 
                         </RelativeLayout>
@@ -287,6 +272,6 @@
         </androidx.core.widget.NestedScrollView>
 
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
