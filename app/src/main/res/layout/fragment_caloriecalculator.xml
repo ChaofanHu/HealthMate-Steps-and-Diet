@@ -21,7 +21,7 @@
         android:layout_marginHorizontal="@dimen/boundary"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
-        app:cardBackgroundColor="#87C4EC"
+        app:cardBackgroundColor="#02786D"
         app:cardCornerRadius="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,10 +171,11 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
 
+            android:layout_marginStart="16dp"
             android:text="Breakfast"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body1"
             app:layout_constraintBottom_toBottomOf="@+id/breakfast"
@@ -313,6 +314,8 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 </LinearLayout>
