@@ -45,4 +45,10 @@
     <style name="grayText">
         <item name="android:textColor">@color/gray5</item>
     </style>
+
+    <style name="headerText">
+        <item name="android:textColor">@color/dashboard_title_color</item>
+        <item name="android:textAppearance">@style/TextAppearance.MdcTypographyStyles.Headline4
+        </item>
+    </style>
 </resources>
