@@ -10,7 +10,9 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="73dp">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -27,66 +29,60 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView1"
                     style="@style/headerText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/boundary"
-                    android:layout_marginTop="@dimen/boundary"
+                    android:layout_marginTop="32dp"
                     android:text="My Profile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="32dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/profileImage"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            tools:src="@tools:sample/avatars" />
-
-                    </FrameLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.35"
+                    tools:context=".ui.Day.DayFragment"
+                    tools:layout_editor_absoluteX="0dp">
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    <com.anychart.AnyChartView
+                        android:id="@+id/dayBarChart"
+                        android:layout_width="363dp"
+                        android:layout_height="253dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/username"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
-                    tools:text="Vaibhav Jaiswal" />
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/loadingBarDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/boundary"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/username">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/materialCardView3"
@@ -153,8 +149,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:alpha="0.8"
-                                android:text="Weight"
                                 android:includeFontPadding="false"
+                                android:text="Weight"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -272,52 +268,18 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="6dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@color/divider"
-                    app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
-
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeWaterLimitBtn"
-                    style="@style/ProfileButtons"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:drawableStart="@drawable/ic_water"
-                    android:text="Edit daily water limit"
-                    app:layout_constraintTop_toBottomOf="@id/divider" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeSleepLimitBtn"
-                    style="@style/ProfileButtons"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_clock"
-                    android:text="Edit daily sleep limit"
-                    app:layout_constraintTop_toBottomOf="@id/changeWaterLimitBtn" />
-
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/aboutButton"
-                    style="@style/ProfileButtons"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_about"
-                    android:text="About"
-                    app:layout_constraintTop_toBottomOf="@id/changeSleepLimitBtn" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/logoutButton"
-                    style="@style/ProfileButtons"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_logout"
-                    android:text="Logout"
-                    app:layout_constraintTop_toBottomOf="@id/aboutButton" />
+                    android:text="@string/menu_report_daily"
+                    android:textColor="#1EB980"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.156" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

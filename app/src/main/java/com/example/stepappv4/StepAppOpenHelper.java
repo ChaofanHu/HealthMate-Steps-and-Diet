@@ -4,11 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class StepAppOpenHelper extends SQLiteOpenHelper {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
-        // Load all records in the database
+    // Load all records in the database
     public static void loadRecords(Context context){
         List<String> dates = new LinkedList<String>();
         StepAppOpenHelper databaseHelper = new StepAppOpenHelper(context);
@@ -52,6 +50,7 @@ public class StepAppOpenHelper extends SQLiteOpenHelper {
         database.close();
 
         Log.d("STORED TIMESTAMPS: ", String.valueOf(dates));
+
     }
 
     // load records from a single day
@@ -120,61 +119,30 @@ public class StepAppOpenHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
 
-        // 5. Close the cursor and database
         cursor.close();
         database.close();
 
-        // 6. Return the map with hours and number of steps
         return map;
     }
 
-    public static Map<String, Integer> loadStepsByDay(Context context, String[] date){
-        // 1. Define a map to store the hour and number of steps as key-value pairs
-        Map<String, Integer>  map = new HashMap<>();
-
-        // 2. Get the readable database
+    public static Map<String, Integer> loadStepsByDay(Context context) {
+        Map<String, Integer> map = new TreeMap<>();
         StepAppOpenHelper databaseHelper = new StepAppOpenHelper(context);
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
 
-        List<String> dates = Arrays.asList(date); // Example dates
-        StringBuilder inClause = new StringBuilder();
+        Cursor cursor = database.rawQuery("SELECT day, COUNT(*) FROM num_steps GROUP BY day", null);
 
-// Create placeholders for each date value
-        String[] args = new String[dates.size()];
-        Arrays.fill(args, "?");
-        inClause.append(TextUtils.join(",", args));
-
-        String query = "SELECT day, COUNT(*) FROM num_steps WHERE day IN (" + inClause + ") GROUP BY day ORDER BY day ASC";
-
-// Convert dates list to an array for the rawQuery method
-        String[] dateArray = dates.toArray(new String[0]);
-
-// Execute the query with the array of dates
-        Cursor cursor = database.rawQuery(query, dateArray);
-        // 3. Define the query to get the data
-//        Cursor cursor = database.rawQuery("SELECT day, COUNT(*)  FROM num_steps " +
-//                "WHERE day in ("+ inClause +") GROUP BY day ORDER BY  day ASC ", date);
-
-        // 4. Iterate over returned elements on the cursor
-        cursor.moveToFirst();
-        for (int index=0; index < cursor.getCount(); index++){
-            String tmpKey = cursor.getString(0);
-            Integer tmpValue = Integer.parseInt(cursor.getString(1));
-
-            //2. Put the data from the database into the map
-            map.put(tmpKey, tmpValue);
-
-
-            cursor.moveToNext();
+        while (cursor.moveToNext()) {
+            String day = cursor.getString(0);
+            Integer count = cursor.getInt(1);
+            map.put(day, count);
         }
 
-        // 5. Close the cursor and database
         cursor.close();
         database.close();
-
-        // 6. Return the map with hours and number of steps
         return map;
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
