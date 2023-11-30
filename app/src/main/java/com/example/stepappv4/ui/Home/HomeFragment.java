@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         stepCountsView.setText("0");
 
         calorieBurned = (TextView) root.findViewById(R.id.text_calorie_burned);
-        calorieBurned.setText("100");
+        calorieBurned.setText("210 kcal");
 
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
         progressBar.setMax(50);

@@ -42,9 +42,11 @@
 
     <string name="carbon_dioxide_saved">Carbon dioxide saved</string>
     <string name="carbon_dioxide_saved_format">%.3f kg</string>
-    <string name="calorie_burned">Calorie burned</string>
+    <string name="calorie_burned">Calorie Burned</string>
     <string name="calorie_burned_format">%d kcal</string>
     <string name="distance_travelled">Distance travelled</string>
     <string name="distance_travelled_format">%.2f km</string>
+    <string name="Altitude">Altitude</string>
+    <string name="calorie_intake">Calorie Intake</string>
 
 </resources>
