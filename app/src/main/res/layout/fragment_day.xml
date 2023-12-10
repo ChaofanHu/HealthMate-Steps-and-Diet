@@ -154,7 +154,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card2TextColor"
-                                android:text="4310 steps" />
+                                android:text="4310 Steps" />
 
 
                         </LinearLayout>
@@ -196,7 +196,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="32dp"
                                 android:includeFontPadding="false"
-                                android:text="2000 cals"
+                                android:text="2000 Cal"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card2TextColor" />
 
@@ -240,7 +240,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rankingTextView"
-                                android:text="200 kgs"
+                                android:text="200 Kg"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card1TextColor"
                                 android:textSize="24sp" />

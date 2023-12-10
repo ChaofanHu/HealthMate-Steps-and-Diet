@@ -203,7 +203,7 @@
                             android:id="@+id/text_calorie_burned"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="210 kcal"
+                            android:text="210 cal"
                             android:textAppearance="?attr/textAppearanceTitleMedium"
                             android:layout_marginStart="16dp"
                             android:layout_marginBottom="2dp"
@@ -274,7 +274,7 @@
                             app:layout_constraintStart_toEndOf="@+id/view_carbon_dioxide_background"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_chainStyle="packed"
-                            android:text="300 kcal" />
+                            android:text="300 cal" />
 
                         <TextView
                             android:id="@+id/text_carbon_dioxide_saved_label"
