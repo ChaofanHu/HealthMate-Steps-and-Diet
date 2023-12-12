@@ -1,9 +1,11 @@
 package com.example.stepappv4;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 
 public class FoodDataImporter {
@@ -23,12 +26,14 @@ public class FoodDataImporter {
         this.dbHelper = dbHelper;
     }
 
-    public void importDataFromExcel(String filePath) {
+    public void importDataFromExcel(Context context, String fileName) {
         try {
-            FileInputStream file = new FileInputStream(new File(filePath));
+            InputStream inputStream = context.getAssets().open(fileName);
 
-            // 创建工作簿
-            Workbook workbook = new XSSFWorkbook(file);
+            // 判断Excel文件格式，并使用相应的Workbook类
+            Workbook workbook;
+            workbook = new HSSFWorkbook(inputStream);
+
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
 
@@ -50,11 +55,12 @@ public class FoodDataImporter {
                 saveToDatabase(foodId, foodDesc, calories, amount1, msreDesc1);
             }
 
-            file.close();
+            inputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     private String getCellData(Row row, int cellIndex) {
         Cell cell = row.getCell(cellIndex);

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,36 +47,24 @@ public class CalorieAppOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void printAllData() {
-        System.out.println("111111111111");
+    public List<String> getFirstFewRows(int numberOfRows) {
+        List<String> rows = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(
-                TABLE_NAME,
-                new String[]{COLUMN_ID, COLUMN_DESC, COLUMN_CALORIES, COLUMN_AMOUNT, COLUMN_MSRE_DESC},
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-
+        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null, String.valueOf(numberOfRows));
         if (cursor.moveToFirst()) {
             do {
-                // 根据列的数据类型读取数据
-                @SuppressLint("Range") int foodId = cursor.getInt(cursor.getColumnIndex(COLUMN_ID)); // 整数类型
-                @SuppressLint("Range") String foodDesc = cursor.getString(cursor.getColumnIndex(COLUMN_DESC)); // 字符串类型
-                @SuppressLint("Range") double calories = cursor.getDouble(cursor.getColumnIndex(COLUMN_CALORIES)); // 实数类型
-                @SuppressLint("Range") double amount1 = cursor.getDouble(cursor.getColumnIndex(COLUMN_AMOUNT)); // 实数类型
-                @SuppressLint("Range") String msreDesc1 = cursor.getString(cursor.getColumnIndex(COLUMN_MSRE_DESC)); // 字符串类型
-
-                // 打印数据
-                System.out.println(("ID: " + foodId + ", Description: " + foodDesc +
-                        ", Calories: " + calories + ", Amount: " + amount1 +
-                        ", Measure Description: " + msreDesc1));
+                // 假设你想打印所有列
+                StringBuilder row = new StringBuilder();
+                for (int i = 0; i < cursor.getColumnCount(); i++) {
+                    row.append(cursor.getString(i)).append(" | ");
+                }
+                rows.add(row.toString());
             } while (cursor.moveToNext());
         }
         cursor.close();
+        return rows;
     }
+
 }
 

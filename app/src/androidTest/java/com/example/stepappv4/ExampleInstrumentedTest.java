@@ -23,12 +23,4 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.stepappv3", appContext.getPackageName());
     }
-    @Test
-    public void testDatabase(){
-        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        CalorieAppOpenHelper calorieAppOpenHelper = new CalorieAppOpenHelper(context);
-        FoodDataImporter foodDataImporter= new FoodDataImporter(calorieAppOpenHelper);
-        foodDataImporter.importDataFromExcel("/Users/zhoutianyi/Desktop/Mobile and Wearable Computing/Project/Project 1/HealthMate-Steps-and-Diet/MyNetDiary_Food_Samples.xls");
-        calorieAppOpenHelper.printAllData();
-    }
 }
