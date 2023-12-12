@@ -9,7 +9,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.stepappv4.StepAppOpenHelper;
 import com.example.stepappv4.R;
+import com.example.stepappv4.StepAppOpenHelper;
 import com.example.stepappv4.databinding.FragmentHomeBinding;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 public class HomeFragment extends Fragment {
 
@@ -150,7 +148,7 @@ class  StepCounterListener implements SensorEventListener{
                 {
                     lastSensorUpdate = currentTimeInMilliSecond;
                     String sensorRawValues = "  x = "+ String.valueOf(x) +"  y = "+ String.valueOf(y) +"  z = "+ String.valueOf(z);
-                    Log.d("Acc. Event", "last sensor update at " + String.valueOf(sensorEventDate) + sensorRawValues);
+//                    Log.d("Acc. Event", "last sensor update at " + String.valueOf(sensorEventDate) + sensorRawValues);
                 }
 
 
@@ -164,7 +162,7 @@ class  StepCounterListener implements SensorEventListener{
                 day = sensorEventDate.substring(0,10);
                 hour = sensorEventDate.substring(11,13);
 
-                Log.d("SensorEventTimestampInMilliSecond", timestamp);
+//                Log.d("SensorEventTimestampInMilliSecond", timestamp);
 
 
                 timestampsSeries.add(timestamp);
@@ -201,7 +199,7 @@ class  StepCounterListener implements SensorEventListener{
 
             if (forwardSlope < 0 && downwardSlope > 0 && valuesInWindow.get(i) > stepThreshold) {
                 accStepCounter += 1;
-                Log.d("ACC STEPS: ", String.valueOf(accStepCounter));
+//                Log.d("ACC STEPS: ", String.valueOf(accStepCounter));
                 stepCountsView.setText(String.valueOf(accStepCounter));
                 progressBar.setProgress(accStepCounter);
 

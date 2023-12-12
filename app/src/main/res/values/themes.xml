@@ -60,4 +60,8 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textAppearance">@style/TextAppearance.MdcTypographyStyles.Body1</item>
     </style>
+    <style name="ColoredText">
+        <item name="android:textColor">@color/lt_darkpblue</item>
+    </style>
+
 </resources>
