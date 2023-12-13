@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"
-        android:gravity="center"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -64,7 +66,7 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="160dp"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
-            tools:text="40 yrs" />
+            android:text="40 yrs" />
 
         <SeekBar
             android:id="@+id/simpleSeekBarForAge"
@@ -83,7 +85,7 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="160dp"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
-            tools:text="60 kgs" />
+            android:text="60 kgs" />
 
         <SeekBar
             android:id="@+id/simpleSeekBarForWeight"
