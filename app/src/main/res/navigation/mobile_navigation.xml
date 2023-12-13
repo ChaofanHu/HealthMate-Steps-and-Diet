@@ -35,12 +35,20 @@
         android:id="@+id/nav_food_search"
         android:name="com.example.stepappv4.ui.FoodSearch.FoodSearchFragment"
         android:label="Food Search"
-        tools:layout="@layout/fragment_food_search" />
+        tools:layout="@layout/fragment_food_search" >
+        <action
+            android:id="@+id/action_nav_food_search_to_nav_calorie"
+            app:destination="@id/nav_calorie" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_age_weight"
         android:name="com.example.stepappv4.ui.UserDetails.UserDetailsFragment"
         android:label="Age and Weight"
-        tools:layout="@layout/fragment_age_weight" />
+        tools:layout="@layout/fragment_age_weight">
+    <action
+        android:id="@+id/action_nav_age_weight_to_nav_day"
+        app:destination="@id/nav_day" />
+    </fragment>
 
 </navigation>
