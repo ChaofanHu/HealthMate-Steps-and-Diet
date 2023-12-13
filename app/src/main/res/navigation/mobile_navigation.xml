@@ -15,12 +15,22 @@
         android:id="@+id/nav_calorie"
         android:name="com.example.stepappv4.ui.CalorieCalculator.CalorieCalculatorFragment"
         android:label="Calorie Calculator"
-        tools:layout="@layout/fragment_caloriecalculator" />
+        tools:layout="@layout/fragment_caloriecalculator">
+        <action
+            android:id="@+id/action_nav_calorie_to_nav_food_search"
+            app:destination="@id/nav_food_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_day"
         android:name="com.example.stepappv4.ui.Day.DayFragment"
         android:label="@string/menu_day"
         tools:layout="@layout/fragment_day" />
+
+    <fragment
+        android:id="@+id/nav_food_search"
+        android:name="com.example.stepappv4.ui.FoodSearch.FoodSearchFragment"
+        android:label="Food Search"
+        tools:layout="@layout/fragment_food_search" />
 
 </navigation>
