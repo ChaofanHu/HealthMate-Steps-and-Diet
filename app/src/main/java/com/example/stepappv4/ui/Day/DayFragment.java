@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +33,7 @@ import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.stepappv4.database.StepAppOpenHelper;
 import com.example.stepappv4.R;
+import com.google.android.material.card.MaterialCardView;
 
 public class DayFragment extends Fragment {
 
@@ -56,7 +60,32 @@ public class DayFragment extends Fragment {
         anyChartView.setBackgroundColor("#00000000");
         anyChartView.setChart(cartesian);
 
+        MaterialCardView materialCardView = root.findViewById(R.id.materialCardView3);
+        MaterialCardView materialCardView2 = root.findViewById(R.id.rankCard);// 替换为实际的ID
+        materialCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAgeWeightFragment();
+            }
+        });
+        materialCardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAgeWeightFragment();
+            }
+        });
+
         return root;
+    }
+
+    private void goToAgeWeightFragment() {
+        NavController navController = NavHostFragment.findNavController(this);
+
+        NavOptions navOptions = new NavOptions.Builder()
+                .setPopUpTo(R.id.nav_day, true)
+                .build();
+
+        navController.navigate(R.id.action_nav_day_to_nav_age_weight, null, navOptions);
     }
 
     public Cartesian createColumnChart() {
