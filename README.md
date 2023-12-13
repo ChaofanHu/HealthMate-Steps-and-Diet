@@ -34,7 +34,16 @@ Open Android Studio -> Open an existing Android Studio project -> Navigate to th
 - Log your meals and activities daily to keep track of your progress.
 - Set and update your fitness goals as needed.
 
+<img width="387" alt="image" src="https://github.com/ChaofanHu/HealthMate-Steps-and-Diet/assets/143227493/e6212308-5cab-4ceb-81b9-3095c60047f5">
 
+
+### Running the App
+- Build and run the app using Android Studio on either a real device or an emulator.
+
+## How to Use
+- On first launch, set up your profile with basic details for personalized tracking.
+- Log your meals and activities daily to keep track of your progress.
+- Set and update your fitness goals as needed.
 
 
 
