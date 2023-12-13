@@ -1,4 +1,4 @@
-package com.example.stepappv4;
+package com.example.stepappv4.database;
 
 import android.content.ContentValues;
 import android.content.Context;

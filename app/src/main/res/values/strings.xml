@@ -49,8 +49,8 @@
     <string name="Altitude">Altitude</string>
     <string name="calorie_intake">Calorie Intake</string>
 
-    <string name="what_s_your_age">What\'s your age ?</string>
-    <string name="this_would_help_you_find_the_perfect_sleep_limit_for_you">This would help you find the perfect sleep limit for you</string>
+    <string name="what_s_your_age">What\'s your age and weight?</string>
+    <string name="this_would_help_you_find_the_perfect_sleep_limit_for_you">This would help you find the perfect calorie intake for you</string>
 
 
 </resources>

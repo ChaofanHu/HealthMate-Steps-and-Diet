@@ -5,6 +5,9 @@ import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.example.stepappv4.database.CalorieAppOpenHelper;
+import com.example.stepappv4.database.FoodDataImporter;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

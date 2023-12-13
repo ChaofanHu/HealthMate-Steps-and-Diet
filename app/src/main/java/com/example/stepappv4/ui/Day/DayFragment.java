@@ -28,7 +28,7 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
-import com.example.stepappv4.StepAppOpenHelper;
+import com.example.stepappv4.database.StepAppOpenHelper;
 import com.example.stepappv4.R;
 
 public class DayFragment extends Fragment {

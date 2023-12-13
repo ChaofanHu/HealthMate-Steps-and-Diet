@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"
@@ -28,14 +29,16 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623">
 
         <TextView
             style="@style/ColoredText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginHorizontal="@dimen/boundary"
             android:layout_marginBottom="8dp"
             android:text="@string/what_s_your_age"
@@ -46,6 +49,7 @@
             style="@style/grayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_marginHorizontal="@dimen/boundary"
             android:layout_marginBottom="56dp"
             android:text="@string/this_would_help_you_find_the_perfect_sleep_limit_for_you"
@@ -56,15 +60,41 @@
             style="@style/ColoredText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_marginBottom="160dp"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
             tools:text="40 yrs" />
 
+        <SeekBar
+            android:id="@+id/simpleSeekBarForAge"
+            android:layout_width="339dp"
+            android:layout_height="23dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp" />
+
+        <TextView
+            android:id="@+id/userWeight"
+            style="@style/ColoredText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="160dp"
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
+            tools:text="60 kgs" />
+
+        <SeekBar
+            android:id="@+id/simpleSeekBarForWeight"
+            android:layout_width="339dp"
+            android:layout_height="23dp"
+            android:layout_margin="10dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/continueBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="60dp"
             android:layout_marginHorizontal="@dimen/boundary"
             android:layout_marginBottom="32dp"
             android:background="@drawable/rounded_primary_button"
@@ -73,8 +103,9 @@
             android:text="Continue"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Button"
             android:textColor="?attr/colorOnSecondary" />
-    </LinearLayout>
 
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
