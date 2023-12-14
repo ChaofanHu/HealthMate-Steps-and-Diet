@@ -16,6 +16,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.stepappv4.database.CalorieAppOpenHelper;
+import com.example.stepappv4.database.FoodDataImporter;
 import com.example.stepappv4.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CalorieAppOpenHelper dbHelper = new CalorieAppOpenHelper(this.getBaseContext());
+        // 实例化数据导入类
+        FoodDataImporter importer = new FoodDataImporter(dbHelper);
+        // 导入数据
+        importer.importDataFromExcel(this.getBaseContext(), "MyNetDiary_Food_Samples.xls");
+
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
