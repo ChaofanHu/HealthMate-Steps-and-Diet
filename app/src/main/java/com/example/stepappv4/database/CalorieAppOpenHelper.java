@@ -66,5 +66,23 @@ public class CalorieAppOpenHelper extends SQLiteOpenHelper {
         return rows;
     }
 
+    // 在 CalorieAppOpenHelper 类中添加
+    public List<String> searchFoodByName(String foodName) {
+        List<String> matchingFoods = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COLUMN_DESC}, COLUMN_DESC + " LIKE ?", new String[]{"%" + foodName + "%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            int columnIndex = cursor.getColumnIndex(COLUMN_DESC);
+            if (columnIndex != -1) {
+                matchingFoods.add(cursor.getString(columnIndex));
+            } else {
+                Log.e("DatabaseError", "Column not found: " + COLUMN_DESC);
+            }
+        }
+        cursor.close();
+        return matchingFoods;
+    }
+
 }
 

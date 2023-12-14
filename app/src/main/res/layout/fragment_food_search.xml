@@ -50,8 +50,6 @@
     </LinearLayout>
 
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboardRv"
         android:layout_width="match_parent"
