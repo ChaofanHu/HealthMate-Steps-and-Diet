@@ -19,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#CFE8A9"
         android:orientation="horizontal">
 
         <!-- 并排的两个元素 -->
@@ -30,12 +31,13 @@
             android:layout_marginStart="@dimen/boundary"
             android:layout_marginTop="@dimen/boundary"
             android:text="Search food"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
         <SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/CustomSearchViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
             android:iconifiedByDefault="false"
             android:queryHint="Please Input Foods Name" />
 
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
+
     </LinearLayout>
 
 

@@ -155,4 +155,8 @@
 
     <color name="versionColor">@color/lt_blue</color>
     <color name="nameColor">@color/lt_blue</color>
+
+    <color name="search_text_color">#FF0000</color> <!-- 例如，红色文字 -->
+    <color name="search_hint_color">#00FF00</color> <!-- 例如，绿色提示 -->
+
 </resources>
