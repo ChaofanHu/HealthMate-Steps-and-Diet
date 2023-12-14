@@ -76,7 +76,7 @@ public class FoodSearchFragment extends Fragment {
 
     private void searchFood(String foodName) {
         CalorieAppOpenHelper dbHelper = new CalorieAppOpenHelper(getContext());
-        List<String> results = dbHelper.searchFoodByName(foodName);
+        List<CalorieAppOpenHelper.FoodDetails> results = dbHelper.searchFoodByName(foodName);
         foodAdapter.setFoodList(results);
     }
 
@@ -84,30 +84,25 @@ public class FoodSearchFragment extends Fragment {
         NavController navController = NavHostFragment.findNavController(this);
         navController.navigate(R.id.action_nav_food_search_to_nav_calorie);
     }
-    private void showPopupDialog(String foodName) {
-        // 加载自定义布局
+    private void showPopupDialog(CalorieAppOpenHelper.FoodDetails foodDetails) {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_food_info, null);
 
-        // 获取并设置布局中的视图
         TextView tvFoodName = dialogView.findViewById(R.id.tvFoodName);
         TextView tvFoodUnit = dialogView.findViewById(R.id.tvFoodUnit);
         TextView tvCaloriePerUnit = dialogView.findViewById(R.id.tvCaloriePerUnit);
         EditText etQuantity = dialogView.findViewById(R.id.etQuantity);
 
-        tvFoodName.setText("Food: " + foodName);
-        // 这里假设你已经有了食物的单位和单位热量信息
-        tvFoodUnit.setText("Unit: [单位]");
-        tvCaloriePerUnit.setText("Calorie per Unit: [热量]");
+        tvFoodName.setText("Food: " + foodDetails.getName());
+        tvFoodUnit.setText("Calorie per Unit: " + foodDetails.getCalories() + " cal");
+        tvCaloriePerUnit.setText("Unit: " + foodDetails.getAmount() + " " + foodDetails.getMeasureDescription());
 
-        // 创建并显示AlertDialog
         new AlertDialog.Builder(getContext())
                 .setTitle("Food Information")
                 .setView(dialogView)
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 在这里处理用户输入的数量
                         String quantity = etQuantity.getText().toString();
                         // TODO: 使用食物名、单位、热量和数量进行相关操作
                     }
@@ -120,9 +115,13 @@ public class FoodSearchFragment extends Fragment {
     // 适配器类
     private class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
-        private List<String> foodList;
+        private List<CalorieAppOpenHelper.FoodDetails> foodList;
 
-
+        // 更新方法以接受 FoodDetails 列表
+        public void setFoodList(List<CalorieAppOpenHelper.FoodDetails> foodList) {
+            this.foodList = foodList;
+            notifyDataSetChanged();
+        }
 
         @NonNull
         @Override
@@ -133,9 +132,16 @@ public class FoodSearchFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull FoodAdapter.FoodViewHolder holder, int position) {
-            String foodName = foodList.get(position);
-            holder.foodNameTextView.setText(foodName);
+            CalorieAppOpenHelper.FoodDetails foodDetails = foodList.get(position);
+            holder.foodNameTextView.setText(foodDetails.getName());
             holder.rankTextView.setText(String.valueOf(position + 1)); // 设置序号
+            holder.plusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 显示带有食品详细信息的弹窗
+                    showPopupDialog(foodDetails);
+                }
+            });
         }
 
         @Override
@@ -143,29 +149,16 @@ public class FoodSearchFragment extends Fragment {
             return foodList == null ? 0 : foodList.size();
         }
 
-        public void setFoodList(List<String> foodList) {
-            this.foodList = foodList;
-            notifyDataSetChanged();
-        }
-
         class FoodViewHolder extends RecyclerView.ViewHolder {
             TextView foodNameTextView;
-            TextView rankTextView; // 添加用于显示序号的TextView
+            TextView rankTextView;
             ImageButton plusButton;
-
 
             FoodViewHolder(View itemView) {
                 super(itemView);
                 foodNameTextView = itemView.findViewById(R.id.foodName);
-                rankTextView = itemView.findViewById(R.id.rank); // 确保您的item布局中有id为rank的TextView
+                rankTextView = itemView.findViewById(R.id.rank);
                 plusButton = itemView.findViewById(R.id.addButtonForCalorie);
-//                 设置点击事件监听器
-                plusButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showPopupDialog(foodNameTextView.getText().toString());
-                    }
-                });
             }
         }
     }

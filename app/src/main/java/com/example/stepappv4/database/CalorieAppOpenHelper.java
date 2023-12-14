@@ -22,6 +22,26 @@ public class CalorieAppOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_AMOUNT = "amount1";
     public static final String COLUMN_MSRE_DESC = "msreDesc1";
 
+    public class FoodDetails {
+        private String name;
+        private double calories;
+        private double amount;
+        private String measureDescription;
+
+        public FoodDetails(String name, double calories, double amount, String measureDescription) {
+            this.name = name;
+            this.calories = calories;
+            this.amount = amount;
+            this.measureDescription = measureDescription;
+        }
+
+        // Getters
+        public String getName() { return name; }
+        public double getCalories() { return calories; }
+        public double getAmount() { return amount; }
+        public String getMeasureDescription() { return measureDescription; }
+    }
+
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY, " +
@@ -67,22 +87,23 @@ public class CalorieAppOpenHelper extends SQLiteOpenHelper {
     }
 
     // 在 CalorieAppOpenHelper 类中添加
-    public List<String> searchFoodByName(String foodName) {
-        List<String> matchingFoods = new ArrayList<>();
+    public List<FoodDetails> searchFoodByName(String foodName) {
+        List<FoodDetails> matchingFoods = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, new String[]{COLUMN_DESC}, COLUMN_DESC + " LIKE ?", new String[]{"%" + foodName + "%"}, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COLUMN_DESC, COLUMN_CALORIES, COLUMN_AMOUNT, COLUMN_MSRE_DESC}, COLUMN_DESC + " LIKE ?", new String[]{"%" + foodName + "%"}, null, null, null);
 
         while (cursor.moveToNext()) {
-            int columnIndex = cursor.getColumnIndex(COLUMN_DESC);
-            if (columnIndex != -1) {
-                matchingFoods.add(cursor.getString(columnIndex));
-            } else {
-                Log.e("DatabaseError", "Column not found: " + COLUMN_DESC);
-            }
+            String name = cursor.getString(cursor.getColumnIndex(COLUMN_DESC));
+            double calories = cursor.getDouble(cursor.getColumnIndex(COLUMN_CALORIES));
+            double amount = cursor.getDouble(cursor.getColumnIndex(COLUMN_AMOUNT));
+            String measureDescription = cursor.getString(cursor.getColumnIndex(COLUMN_MSRE_DESC));
+
+            matchingFoods.add(new FoodDetails(name, calories, amount, measureDescription));
         }
         cursor.close();
         return matchingFoods;
     }
+
 
 }
 

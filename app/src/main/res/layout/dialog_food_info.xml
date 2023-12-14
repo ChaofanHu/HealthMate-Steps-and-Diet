@@ -10,21 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="食物名称"
-        android:textSize="18sp"/>
+        android:textSize="17sp"/>
 
     <TextView
         android:id="@+id/tvFoodUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="单位"
-        android:textSize="16sp"/>
+        android:textSize="17sp"/>
 
     <TextView
         android:id="@+id/tvCaloriePerUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="单位热量"
-        android:textSize="16sp"/>
+        android:textSize="17sp"/>
 
     <EditText
         android:id="@+id/etQuantity"
