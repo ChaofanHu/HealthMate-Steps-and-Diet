@@ -16,14 +16,38 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:src="@drawable/ic_back" />
-
-    <TextView
-        style="@style/headerText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/boundary"
-        android:layout_marginTop="@dimen/boundary"
-        android:text="Search food" />
+        android:orientation="horizontal">
+
+        <!-- 并排的两个元素 -->
+
+        <TextView
+            style="@style/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/boundary"
+            android:layout_marginTop="@dimen/boundary"
+            android:text="Search food"
+            android:textSize="15sp" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Please Input Foods Name" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboardRv"
@@ -32,6 +56,5 @@
         android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/leaderboard_rv_item" />
-
 
 </LinearLayout>
