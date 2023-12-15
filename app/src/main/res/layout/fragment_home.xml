@@ -264,27 +264,30 @@
                             app:tint="?attr/colorOnSecondary" />
 
                         <TextView
-                            android:id="@+id/text_carbon_dioxide_saved"
+                            android:id="@+id/calorie_intake_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginBottom="2dp"
+                            android:text="300 cal"
                             android:textAppearance="?attr/textAppearanceTitleMedium"
-                            app:layout_constraintBottom_toTopOf="@+id/text_carbon_dioxide_saved_label"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/view_carbon_dioxide_background"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_chainStyle="packed"
-                            android:text="300 cal" />
+                            app:layout_constraintVertical_bias="0.246"
+                            app:layout_constraintVertical_chainStyle="packed" />
 
                         <TextView
                             android:id="@+id/text_carbon_dioxide_saved_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="64dp"
                             android:text="@string/calorie_intake"
                             android:textAppearance="?attr/textAppearanceBodyMedium"
-                            app:layout_constraintBottom_toBottomOf="@+id/view_carbon_dioxide_background"
-                            app:layout_constraintStart_toStartOf="@+id/text_carbon_dioxide_saved"
-                            app:layout_constraintTop_toBottomOf="@+id/text_carbon_dioxide_saved"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/calorie_intake_text"
+                            app:layout_constraintVertical_bias="0.192"
                             app:layout_constraintVertical_chainStyle="packed" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

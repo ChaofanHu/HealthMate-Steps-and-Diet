@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.stepappv4.R;
+import com.example.stepappv4.database.FoodIntakeDbHelper;
 import com.example.stepappv4.database.StepAppOpenHelper;
 import com.example.stepappv4.databinding.FragmentHomeBinding;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -29,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
@@ -47,11 +50,15 @@ public class HomeFragment extends Fragment {
     private StepCounterListener sensorListener;
 
     private Sensor stepDetectorSensor;
+    private FoodIntakeDbHelper foodIntakeDbHelper;
+    private  TextView calorieIntake;
 
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        foodIntakeDbHelper = new FoodIntakeDbHelper(this.getContext());
+
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -61,8 +68,26 @@ public class HomeFragment extends Fragment {
         stepCountsView = (TextView) root.findViewById(R.id.counter);
         stepCountsView.setText("0");
 
-        calorieBurned = (TextView) root.findViewById(R.id.text_calorie_burned);
-        calorieBurned.setText("210 cal");
+        calorieBurned= (TextView) root.findViewById(R.id.text_calorie_burned);
+        calorieBurned.setText("0 cal");
+
+        calorieIntake = (TextView) root.findViewById(R.id.calorie_intake_text);
+
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                // 由于这是在非UI线程执行，因此需要切换到UI线程来更新UI元素
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        calorieIntake.setText(foodIntakeDbHelper.getTotalCalories() + " cal");
+                    }
+                });
+            }
+        }, 0, 100);
+
 
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
         progressBar.setMax(50);

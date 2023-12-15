@@ -30,6 +30,8 @@
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="输入数量"
-        android:inputType="number"/>
+        android:backgroundTint="#A8E3AB"
+        android:hint="Input Number"
+        android:inputType="numberDecimal"
+        android:textColor="#000000" />
 </LinearLayout>
