@@ -7,9 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class FoodIntakeDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "FoodIntake.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public FoodIntakeDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -22,7 +25,8 @@ public class FoodIntakeDbHelper extends SQLiteOpenHelper {
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "food_name TEXT NOT NULL," +
                         "calories REAL NOT NULL," +
-                        "meal_type TEXT" +
+                        "meal_type TEXT," +
+                        "date TEXT" +
                         ");";
 
         db.execSQL(SQL_CREATE_FOOD_INTAKE_TABLE);
@@ -43,10 +47,14 @@ public class FoodIntakeDbHelper extends SQLiteOpenHelper {
     public boolean addFoodIntake(String foodName, double calories) {
         // 获取数据库实例
         SQLiteDatabase db = this.getWritableDatabase();
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
 
         ContentValues values = new ContentValues();
         values.put("food_name", foodName);
         values.put("calories", calories);
+        values.put("date", formattedDate);
 
 
         // 插入数据
@@ -65,9 +73,12 @@ public class FoodIntakeDbHelper extends SQLiteOpenHelper {
 
     public double getTotalCalories() {
         SQLiteDatabase db = this.getReadableDatabase();
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
         double totalCalories = 0;
 
-        final String SQL_QUERY_TOTAL = "SELECT SUM(calories) as Total FROM food_intake";
+        final String SQL_QUERY_TOTAL = "SELECT SUM(calories) as Total FROM food_intake WHERE date = '" + formattedDate + "'";
         Cursor cursor = db.rawQuery(SQL_QUERY_TOTAL, null);
 
         // 检查Cursor是否有数据
