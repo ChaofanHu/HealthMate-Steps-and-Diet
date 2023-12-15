@@ -108,7 +108,7 @@ public class FoodSearchFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String quantity = etQuantity.getText().toString();
                         // TODO: 使用食物名、单位、热量和数量进行相关操作
-                        dbHelper.addFoodIntake(foodDetails.getName(),foodDetails.getCalories()*foodDetails.getAmount());
+                        dbHelper.addFoodIntake(foodDetails.getName(),foodDetails.getCalories()*Double.parseDouble(quantity));
                     }
                 })
                 .setNegativeButton("Cancel", null)
