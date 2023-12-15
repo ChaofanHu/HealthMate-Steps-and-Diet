@@ -1,5 +1,6 @@
 package com.example.stepappv4.ui.Day;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.stepappv4.database.StepAppOpenHelper;
 import com.example.stepappv4.R;
+import com.example.stepappv4.database.UserInfoDbHelper;
 import com.google.android.material.card.MaterialCardView;
 
 public class DayFragment extends Fragment {
@@ -47,6 +49,8 @@ public class DayFragment extends Fragment {
     String current_time = sdf.format(cDate);
 
     public Map<String, Integer> stepsByDay = null;
+    private TextView ageTextView;
+    private TextView weightTextView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -75,6 +79,11 @@ public class DayFragment extends Fragment {
             }
         });
 
+        ageTextView = root.findViewById(R.id.ageTv);
+        weightTextView = root.findViewById(R.id.rankingTv);
+
+        loadUserInfo();
+
         return root;
     }
 
@@ -86,6 +95,22 @@ public class DayFragment extends Fragment {
                 .build();
 
         navController.navigate(R.id.action_nav_day_to_nav_age_weight, null, navOptions);
+    }
+
+    private void loadUserInfo() {
+        UserInfoDbHelper dbHelper = new UserInfoDbHelper(getContext());
+        Cursor userInfoCursor = dbHelper.getLatestUserInfo();
+
+        if (userInfoCursor != null && userInfoCursor.moveToFirst()) {
+            int age = userInfoCursor.getInt(userInfoCursor.getColumnIndex("age"));
+            int weight = userInfoCursor.getInt(userInfoCursor.getColumnIndex("weight"));
+
+            // 假设您有用于显示年龄和体重的 TextView
+            ageTextView.setText(String.valueOf(age));
+            weightTextView.setText(weight + " kg");
+
+            userInfoCursor.close();
+        }
     }
 
     public Cartesian createColumnChart() {

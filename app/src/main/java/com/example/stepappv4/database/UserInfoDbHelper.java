@@ -21,7 +21,7 @@ public class UserInfoDbHelper extends SQLiteOpenHelper {
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "name TEXT NOT NULL," +
                         "weight REAL NOT NULL," +
-                        "height REAL NOT NULL" +
+                        "age REAL NOT NULL" +
                         ");";
 
         db.execSQL(SQL_CREATE_USER_INFO_TABLE);
@@ -32,13 +32,13 @@ public class UserInfoDbHelper extends SQLiteOpenHelper {
         // 此处用于处理数据库的升级，暂时留空
     }
 
-    public void insertUser(String name, double weight, double height) {
+    public void insertUser(String name, int weight, int age) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("weight", weight);
-        values.put("height", height);
+        values.put("age", age);
 
         db.insert("user_info", null, values);
     }
@@ -46,5 +46,12 @@ public class UserInfoDbHelper extends SQLiteOpenHelper {
     public Cursor getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query("user_info", null, null, null, null, null, null);
+    }
+
+    public Cursor getLatestUserInfo() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // 查询最新的记录，假设"id"是自增主键
+        String query = "SELECT * FROM user_info ORDER BY id DESC LIMIT 1";
+        return db.rawQuery(query, null);
     }
 }
