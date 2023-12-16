@@ -32,9 +32,9 @@
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -58,6 +58,35 @@
             android:text="@string/this_would_help_you_find_the_perfect_sleep_limit_for_you"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Caption" />
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_margin="10dp"
+
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Male"
+                android:textColor="@color/lt_darkpblue"
+
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textColor="@color/lt_darkpblue"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
         <TextView
             android:id="@+id/userAge"
             style="@style/ColoredText"
@@ -65,8 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginBottom="160dp"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
-            android:text="40 yrs" />
+            android:text="40 yrs"
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3" />
 
         <SeekBar
             android:id="@+id/simpleSeekBarForAge"
@@ -77,6 +106,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="38dp" />
 
+
+
         <TextView
             android:id="@+id/userWeight"
             style="@style/ColoredText"
@@ -84,14 +115,33 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginBottom="160dp"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3"
-            android:text="60 kgs" />
+            android:text="60 kgs"
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3" />
 
         <SeekBar
             android:id="@+id/simpleSeekBarForWeight"
             android:layout_width="339dp"
             android:layout_height="23dp"
             android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/userHeight"
+            style="@style/ColoredText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="160dp"
+            android:text="160 cm"
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline3" />
+
+        <SeekBar
+            android:id="@+id/simpleSeekBarForHeight"
+            android:layout_width="339dp"
+            android:layout_height="23dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/continueBtn"
