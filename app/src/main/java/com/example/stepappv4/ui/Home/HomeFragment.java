@@ -2,6 +2,7 @@ package com.example.stepappv4.ui.Home;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -15,10 +16,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import com.example.stepappv4.R;
 import com.example.stepappv4.database.FoodIntakeDbHelper;
 import com.example.stepappv4.database.StepAppOpenHelper;
@@ -26,12 +31,20 @@ import com.example.stepappv4.databinding.FragmentHomeBinding;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.Address;
 
 public class HomeFragment extends Fragment {
 
@@ -52,6 +65,10 @@ public class HomeFragment extends Fragment {
     private Sensor stepDetectorSensor;
     private FoodIntakeDbHelper foodIntakeDbHelper;
     private  TextView calorieIntake;
+
+    private TextView distanceTravelled;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
 
 
 
@@ -111,12 +128,55 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getContext(), R.string.acc_sensor_not_available, Toast.LENGTH_LONG).show();
         }
 
+        distanceTravelled = (TextView) root.findViewById(R.id.text_distance_travelled);
+
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                updateCityName(location);
+            }
+
+            // Implement other LocationListener methods
+        };
+
+        // Request location updates
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
+
         return root;
+    }
+
+    private void updateCityName(Location location) {
+        try {
+            Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if (addresses.size() > 0) {
+                Address address = addresses.get(0);
+                String locality = address.getLocality();       // 获取城市
+                String country = address.getCountryName();     // 获取国家
+
+                // 创建一个字符串来显示所有这些信息
+                String addressText = (locality != null ? locality + ", " : "") +
+                        (country != null ? country : "");
+
+                distanceTravelled.setText(addressText);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if (locationManager != null && locationListener != null) {
+            locationManager.removeUpdates(locationListener);
+        }
         binding = null;
     }
 }

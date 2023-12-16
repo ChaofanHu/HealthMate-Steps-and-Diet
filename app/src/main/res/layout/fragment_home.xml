@@ -146,13 +146,13 @@
                             app:layout_constraintStart_toEndOf="@+id/view_distance_background"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_chainStyle="packed"
-                            android:text="300 m" />
+                            android:text="Loading..." />
 
                         <TextView
                             android:id="@+id/text_distance_travelled_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/Altitude"
+                            android:text="@string/Location"
                             android:textAppearance="?attr/textAppearanceBodyMedium"
                             app:layout_constraintBottom_toBottomOf="@+id/view_distance_background"
                             app:layout_constraintStart_toStartOf="@+id/text_distance_travelled"
