@@ -144,7 +144,7 @@
                                 android:layout_height="wrap_content"
                                 android:alpha="0.8"
                                 android:includeFontPadding="false"
-                                android:text="Average Step"
+                                android:text="Height"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -154,7 +154,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card2TextColor"
-                                android:text="4310 Steps" />
+                                android:text="150 cm" />
 
 
                         </LinearLayout>
@@ -186,7 +186,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:alpha="0.8"
-                                android:text="Cal"
+                                android:text="Sex"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -196,7 +196,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="32dp"
                                 android:includeFontPadding="false"
-                                android:text="2000 Cal"
+                                android:text="Male"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card2TextColor" />
 
@@ -237,8 +237,8 @@
 
                             <TextView
                                 android:id="@+id/rankingTv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="93dp"
+                                android:layout_height="64dp"
                                 android:layout_below="@id/rankingTextView"
                                 android:text="200 Kg"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
