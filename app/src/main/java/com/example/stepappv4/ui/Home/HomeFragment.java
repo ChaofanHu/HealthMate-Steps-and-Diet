@@ -1,21 +1,31 @@
 package com.example.stepappv4.ui.Home;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -23,7 +33,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.Manifest;
 import com.example.stepappv4.R;
 import com.example.stepappv4.database.FoodIntakeDbHelper;
 import com.example.stepappv4.database.StepAppOpenHelper;
@@ -39,12 +48,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.Address;
 
 public class HomeFragment extends Fragment {
 
@@ -69,6 +72,7 @@ public class HomeFragment extends Fragment {
     private TextView distanceTravelled;
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private TextView goalText;
 
 
 
@@ -107,8 +111,19 @@ public class HomeFragment extends Fragment {
 
 
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
-        progressBar.setMax(50);
+        progressBar.setMax(5000);
         progressBar.setProgress(0);
+
+        goalText = (TextView) root.findViewById(R.id.goal);
+        goalText.setText("Goal: " + Integer.toString(5000));
+        progressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSetGoalDialog();
+            }
+        });
+
+
 
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
@@ -150,6 +165,50 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+    private void showSetGoalDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        builder.setTitle("Set Your Goal");
+
+        // 设置对话框内容，例如一个输入框
+        final EditText input = new EditText(this.getContext());
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setTextColor(Color.BLACK);
+        builder.setView(input);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                try {
+                    final int goalSteps = Integer.parseInt(input.getText().toString());
+
+                    // 确保在UI线程上执行UI更新
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setMax(goalSteps);
+                            goalText.setText("Goal: " + Integer.toString(goalSteps));
+                        }
+                    });
+                } catch (NumberFormatException e) {
+                    // 处理错误的输入
+                    Toast.makeText(getContext(), "请输入有效的数字", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+
 
     private void updateCityName(Location location) {
         try {
