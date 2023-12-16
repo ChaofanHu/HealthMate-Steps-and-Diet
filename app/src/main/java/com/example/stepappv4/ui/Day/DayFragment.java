@@ -51,6 +51,8 @@ public class DayFragment extends Fragment {
     public Map<String, Integer> stepsByDay = null;
     private TextView ageTextView;
     private TextView weightTextView;
+    private TextView genderTextView;
+    private TextView heightTextView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class DayFragment extends Fragment {
 
         MaterialCardView materialCardView = root.findViewById(R.id.materialCardView3);
         MaterialCardView materialCardView2 = root.findViewById(R.id.rankCard);// 替换为实际的ID
+        MaterialCardView materialCardView3 = root.findViewById(R.id.materialCardView4);
+        MaterialCardView materialCardView4 = root.findViewById(R.id.materialCardView5);
         materialCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,9 +82,22 @@ public class DayFragment extends Fragment {
                 goToAgeWeightFragment();
             }
         });
-
+        materialCardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAgeWeightFragment();
+            }
+        });
+        materialCardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAgeWeightFragment();
+            }
+        });
         ageTextView = root.findViewById(R.id.ageTv);
         weightTextView = root.findViewById(R.id.rankingTv);
+        genderTextView = root.findViewById(R.id.expTv);
+        heightTextView=root.findViewById(R.id.weightTv);
 
         loadUserInfo();
 
@@ -104,10 +121,14 @@ public class DayFragment extends Fragment {
         if (userInfoCursor != null && userInfoCursor.moveToFirst()) {
             int age = userInfoCursor.getInt(userInfoCursor.getColumnIndex("age"));
             int weight = userInfoCursor.getInt(userInfoCursor.getColumnIndex("weight"));
+            String gender = userInfoCursor.getString(userInfoCursor.getColumnIndex("gender"));
+            int height = userInfoCursor.getInt(userInfoCursor.getColumnIndex("height"));
 
-            // 假设您有用于显示年龄和体重的 TextView
+            // 确保TextView正确引用
             ageTextView.setText(String.valueOf(age));
             weightTextView.setText(weight + " kg");
+            genderTextView.setText(gender);
+            heightTextView.setText(height + " cm");
 
             userInfoCursor.close();
         }

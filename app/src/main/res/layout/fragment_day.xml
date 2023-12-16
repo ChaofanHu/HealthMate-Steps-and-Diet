@@ -218,7 +218,7 @@
                         app:layout_constraintTop_toTopOf="@+id/materialCardView5">
 
                         <RelativeLayout
-                            android:layout_width="109dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
                             android:orientation="vertical"
@@ -237,13 +237,14 @@
 
                             <TextView
                                 android:id="@+id/rankingTv"
-                                android:layout_width="93dp"
-                                android:layout_height="64dp"
+                                android:layout_width="160dp"
+                                android:layout_height="63dp"
                                 android:layout_below="@id/rankingTextView"
+                                android:layout_marginTop="1dp"
                                 android:text="200 Kg"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline4"
                                 android:textColor="@color/card1TextColor"
-                                android:textSize="24sp" />
+                                android:textSize="30sp" />
 
 
                         </RelativeLayout>

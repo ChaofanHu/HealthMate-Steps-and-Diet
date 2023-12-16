@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UserInfoDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "UserInfo.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public UserInfoDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -21,6 +21,8 @@ public class UserInfoDbHelper extends SQLiteOpenHelper {
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "name TEXT NOT NULL," +
                         "weight REAL NOT NULL," +
+                        "height REAL NOT NULL," + // 新增身高字段
+                        "gender TEXT NOT NULL," +  // 新增性别字段
                         "age REAL NOT NULL" +
                         ");";
 
@@ -29,16 +31,25 @@ public class UserInfoDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // 此处用于处理数据库的升级，暂时留空
+        // 检查旧版本号和新版本号，根据需要执行数据库升级
+        if (oldVersion < 2) {
+            // 添加新列
+            db.execSQL("ALTER TABLE user_info ADD COLUMN gender TEXT NOT NULL DEFAULT 'Unknown'");
+            db.execSQL("ALTER TABLE user_info ADD COLUMN height REAL NOT NULL DEFAULT 0");
+        }
+        // 如果有更多版本的升级，可以继续添加 if 语句处理
     }
 
-    public void insertUser(String name, int weight, int age) {
+
+    public void insertUser(String name, int weight, int age, String gender, int height) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("weight", weight);
         values.put("age", age);
+        values.put("gender", gender);  // 添加性别
+        values.put("height", height);  // 添加身高
 
         db.insert("user_info", null, values);
     }
