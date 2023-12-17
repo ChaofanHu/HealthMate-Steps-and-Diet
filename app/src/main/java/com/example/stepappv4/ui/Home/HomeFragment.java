@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -20,6 +21,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.stepappv4.R;
 import com.example.stepappv4.database.FoodIntakeDbHelper;
 import com.example.stepappv4.database.StepAppOpenHelper;
+import com.example.stepappv4.database.UserInfoDbHelper;
 import com.example.stepappv4.databinding.FragmentHomeBinding;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
@@ -87,7 +90,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         stepCountsView = (TextView) root.findViewById(R.id.counter);
-        stepCountsView.setText("0");
+        stepCountsView.setText(Integer.toString(StepAppOpenHelper.getTotalRecordCount(this.getContext())));
 
         calorieBurned= (TextView) root.findViewById(R.id.text_calorie_burned);
         calorieBurned.setText("0 cal");
@@ -108,11 +111,57 @@ public class HomeFragment extends Fragment {
                 });
             }
         }, 0, 100);
-
-
         progressBar = (CircularProgressIndicator) root.findViewById(R.id.progressBar);
         progressBar.setMax(5000);
-        progressBar.setProgress(0);
+        progressBar.setProgress(StepAppOpenHelper.getTotalRecordCount(this.getContext()));
+
+
+        UserInfoDbHelper userInfoDbHelper = new UserInfoDbHelper(this.getContext());
+        Cursor latestUserInfo = userInfoDbHelper.getLatestUserInfo();
+        // 检查 Cursor 是否包含数据
+        if (latestUserInfo != null && latestUserInfo.moveToFirst()) {
+            // 从 Cursor 中读取数据
+            // 假设 user_info 表有 "name" 和 "age" 列
+            String name = latestUserInfo.getString(latestUserInfo.getColumnIndex("name"));
+            int age = latestUserInfo.getInt(latestUserInfo.getColumnIndex("age"));
+            String gender = latestUserInfo.getString(latestUserInfo.getColumnIndex("gender"));
+            double weight = latestUserInfo.getDouble(latestUserInfo.getColumnIndex("weight"));
+            // 使用数据，例如显示在界面上或进行其他处理
+            Timer timer1 = new Timer();
+            timer1.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            // 假设 progressBar 已经某种方式更新了它的进度
+                            double distance;
+                            double calorieBurnedValue;
+                            if ("Male".equals(gender)) {
+                                distance = (1000l / 700l) * progressBar.getProgress();
+                                Log.d("测试", "run: " + distance);
+                            } else { // 假设只有男性和女性，简化逻辑
+                                distance = (1000l / 1500l) * progressBar.getProgress();
+                            }
+                            calorieBurnedValue = distance * weight * 1.036;
+                            calorieBurned.setText(calorieBurnedValue + " cal");
+                        }
+                    });
+                }
+            }, 0, 1000); // 调整间隔以减少性能压力
+
+            // 最后关闭 Cursor
+            latestUserInfo.close();
+        } else {
+            // Cursor 为空或没有数据
+            // 处理空或无数据的情况
+            // ...
+        }
+
+
+
+
 
         goalText = (TextView) root.findViewById(R.id.goal);
         goalText.setText("Goal: " + Integer.toString(5000));
@@ -193,7 +242,7 @@ public class HomeFragment extends Fragment {
                     });
                 } catch (NumberFormatException e) {
                     // 处理错误的输入
-                    Toast.makeText(getContext(), "请输入有效的数字", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please Input the correct Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -265,6 +314,15 @@ class  StepCounterListener implements SensorEventListener{
         this.stepCountsView = stepCountsView;
         this.database = databse;
         this.progressBar = progressBar;
+        // 获取数据库中保存的步数
+        int initialStepCount = StepAppOpenHelper.getTotalRecordCount(progressBar.getContext());
+
+        // 使用获取的步数初始化计步器
+        accStepCounter = initialStepCount;
+
+        // 更新 UI 显示
+        stepCountsView.setText(String.valueOf(accStepCounter));
+        progressBar.setProgress(accStepCounter);
     }
 
 

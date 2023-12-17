@@ -154,4 +154,27 @@ public class StepAppOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+    // 新方法来获取数据库中的总记录数
+    public static int getTotalRecordCount(Context context) {
+        StepAppOpenHelper databaseHelper = new StepAppOpenHelper(context);
+        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        int recordCount = 0;
+
+        // 使用数据库的 query 方法计算记录数
+        try {
+            Cursor cursor = database.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+            if (cursor.moveToFirst()) {
+                recordCount = cursor.getInt(0);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            // 处理异常，如有必要可进行日志记录
+            e.printStackTrace();
+        } finally {
+            database.close();
+        }
+
+        return recordCount;
+    }
 }
