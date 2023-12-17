@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/ripple_effect.xml -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#009688"> <!-- Ripple颜色 -->
+    <item android:drawable="@drawable/plus_icon"/> <!-- 默认背景 -->
+</ripple>
