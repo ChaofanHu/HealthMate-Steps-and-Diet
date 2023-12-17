@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FoodIntakeDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "FoodIntake.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public FoodIntakeDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

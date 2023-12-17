@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@id/yayText" />
 
             <TextView
-                android:id="@+id/completedText"
+                android:id="@+id/calorie_intake_in_calorie_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -73,14 +73,14 @@
                 android:text="2300" />
 
             <TextView
-                android:id="@+id/totalText"
+                android:id="@+id/goal_calorie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:alpha="0.7"
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
                 android:textColor="?attr/colorOnSecondary"
-                app:layout_constraintBottom_toBottomOf="@+id/completedText"
+                app:layout_constraintBottom_toBottomOf="@+id/calorie_intake_in_calorie_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.455"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/totalText"
+                app:layout_constraintTop_toBottomOf="@id/goal_calorie"
                 app:progressView_animation="decelerate"
                 app:progressView_autoAnimate="true"
                 app:progressView_colorBackground="@color/progress_bg_color"
