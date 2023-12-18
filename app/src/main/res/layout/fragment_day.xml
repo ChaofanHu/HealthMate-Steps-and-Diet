@@ -186,7 +186,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:alpha="0.8"
-                                android:text="Sex"
+                                android:text="Gender"
                                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
                                 android:textColor="@color/card2TextColor" />
 
@@ -237,8 +237,8 @@
 
                             <TextView
                                 android:id="@+id/rankingTv"
-                                android:layout_width="160dp"
-                                android:layout_height="63dp"
+                                android:layout_width="122dp"
+                                android:layout_height="84dp"
                                 android:layout_below="@id/rankingTextView"
                                 android:layout_marginTop="1dp"
                                 android:text="200 Kg"
