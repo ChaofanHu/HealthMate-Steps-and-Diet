@@ -139,13 +139,14 @@ public class HomeFragment extends Fragment {
                             double distance;
                             double calorieBurnedValue;
                             if ("Male".equals(gender)) {
-                                distance = (1000l / 700l) * progressBar.getProgress();
-                                Log.d("测试", "run: " + distance);
-                            } else { // 假设只有男性和女性，简化逻辑
-                                distance = (1000l / 1500l) * progressBar.getProgress();
+                                double result = ((double)1000 / 1300) * (double) progressBar.getProgress() / (double)1000;
+                                distance = result;
+                            } else { // Assuming there are only male and female for simplicity
+                                double result = ((double)1000 / 1500) * (double) progressBar.getProgress() / (double)1000;
+                                distance = result;
                             }
                             calorieBurnedValue = distance * weight * 1.036;
-                            calorieBurned.setText(calorieBurnedValue + " cal");
+                            calorieBurned.setText((int)calorieBurnedValue + " cal");
                         }
                     });
                 }
